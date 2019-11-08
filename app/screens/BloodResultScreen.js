@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
+import { stackNavigationType } from '../types';
 
 export default function BloodResultScreen(props) {
   return (
@@ -9,3 +10,7 @@ export default function BloodResultScreen(props) {
     </View>
   );
 }
+
+BloodResultScreen.propTypes = {
+  navigation: stackNavigationType.isRequired,
+};
