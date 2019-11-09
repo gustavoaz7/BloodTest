@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, Alert } from 'react-native';
 import axios from 'axios';
 import Loading from '../components/Loading';
 
@@ -10,16 +10,20 @@ export default class BloodListScreen extends Component {
     loading: true,
   };
 
-  async componentDidMount() {
+  componentDidMount() {
+    this.loadTests();
+  }
+
+  loadTests = async () => {
     try {
       const { data: tests } = await axios.get('http://192.168.0.13:4000/tests');
       const sortedTests = this.sortTests(tests);
-      this.setState({ tests: sortedTests, loading: false });
+      this.setState({ tests: sortedTests, loading: false, error: false });
     } catch (e) {
-      this.setState({ error: true, loading: false });
+      this.setState({ tests: [], error: true, loading: false });
       console.warn('BloodListScreen load tests error - ', e);
     }
-  }
+  };
 
   sortTests(tests) {
     return tests.sort((a, b) => {
@@ -37,6 +41,19 @@ export default class BloodListScreen extends Component {
     });
   }
 
+  handleError() {
+    Alert.alert(
+      'Something went wrong :(',
+      'There was a problem connecting to our servers.\n\nPlease try again in a few seconds.',
+      [
+        {
+          text: 'Try again',
+          onPress: this.loadTests,
+        },
+      ],
+    );
+  }
+
   keyExtractor(item) {
     return item.id;
   }
@@ -52,8 +69,10 @@ export default class BloodListScreen extends Component {
   render() {
     const { tests, loading, error } = this.state;
     if (loading) return <Loading />;
-    // TODO: handle error
-    if (error) return <Text>{'Something went wrong :('}</Text>;
+    if (error) {
+      this.handleError();
+      return null;
+    }
     return <FlatList data={tests} renderItem={this.renderItem} keyExtractor={this.keyExtractor} />;
   }
 }
