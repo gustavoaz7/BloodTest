@@ -17,6 +17,10 @@
   "rules": {
     "prettier/prettier": "error",
     "react/jsx-filename-extension": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {"devDependencies": true}
+    ],
     "no-use-before-define": [
       "error",
       {

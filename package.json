@@ -6,7 +6,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint 'app/**/*.js'"
+    "lint": "eslint 'app/**/*.js'",
+    "test": "jest",
+    "test:update": "jest -- -u"
   },
   "dependencies": {
     "expo": "^35.0.0",
@@ -24,6 +26,9 @@
   "devDependencies": {
     "babel-eslint": "^10.0.3",
     "babel-preset-expo": "^7.1.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-prettier": "^6.5.0",
@@ -32,7 +37,27 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.16.0",
     "eslint-plugin-react-native": "^3.8.1",
+    "jest-expo": "^35.0.0",
     "prettier": "^1.18.2"
+  },
+  "jest": {
+    "preset": "jest-expo",
+    "moduleDirectories": [
+      "node_modules",
+      "app"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/react-native/jest/preprocessor.js"
+    },
+    "setupFiles": [
+      "<rootDir>/app/setupTests.js"
+    ],
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|sentry-expo|native-base)"
+    ]
   },
   "private": true
 }
