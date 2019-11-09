@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, Button } from 'react-native';
 import { stackNavigationType } from '../types';
+import { SCREENS } from '../constants';
 
 export default function BloodListScreen(props) {
   return (
@@ -8,7 +9,7 @@ export default function BloodListScreen(props) {
       <Text>BloodListScreen</Text>
       <Button
         title="Go to results screen"
-        onPress={() => props.navigation.navigate('BloodResult')}
+        onPress={() => props.navigation.navigate(SCREENS.BLOOD_RESULT)}
       />
     </View>
   );

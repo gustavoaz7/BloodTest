@@ -1,29 +1,30 @@
 import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
+import { SCREENS } from './constants';
 import DNAScreen from './screens/DNAScreen';
 import BloodListScreen from './screens/BloodListScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import BloodResultScreen from './screens/BloodResultScreen';
 
 const BloodStackNavigation = createStackNavigator({
-  BloodList: {
+  [SCREENS.BLOOD_LIST]: {
     screen: BloodListScreen,
   },
-  BloodResult: {
+  [SCREENS.BLOOD_RESULT]: {
     screen: BloodResultScreen,
   },
 });
 
 const MainBottomNavigation = createBottomTabNavigator(
   {
-    DNA: {
+    [SCREENS.DNA]: {
       screen: DNAScreen,
     },
     Blood: {
       screen: BloodStackNavigation,
     },
-    ProfileScreen: {
+    [SCREENS.PROFILE]: {
       screen: ProfileScreen,
     },
   },

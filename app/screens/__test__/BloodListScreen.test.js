@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-native';
 import { shallow } from 'enzyme';
 import BloodListScreen from '../BloodListScreen';
+import { SCREENS } from '../../constants';
 
 describe('BloodListScreen', () => {
   it('renders without crashing', () => {
@@ -24,6 +25,6 @@ describe('BloodListScreen', () => {
       .props()
       .onPress();
 
-    expect(navigateSpy).toBeCalledWith('BloodResult');
+    expect(navigateSpy).toBeCalledWith(SCREENS.BLOOD_RESULT);
   });
 });
