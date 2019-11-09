@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 
-// eslint-disable-next-line import/prefer-default-export
 export const stackNavigationType = PropTypes.shape({
   state: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
