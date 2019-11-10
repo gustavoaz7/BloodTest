@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading matches snapshot 1`] = `
+<Styled(View)>
+  <ActivityIndicator
+    animating={true}
+    color="#f5785a"
+    hidesWhenStopped={true}
+    size="large"
+  />
+</Styled(View)>
+`;

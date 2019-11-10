@@ -1,21 +1,103 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BloodListScreen matches snapshot 1`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-      "flex": 1,
-      "justifyContent": "center",
-    }
+exports[`BloodListScreen matches snapshot error state: error 1`] = `""`;
+
+exports[`BloodListScreen matches snapshot loading state: loading 1`] = `
+<Loading
+  color="#f5785a"
+  size="large"
+/>
+`;
+
+exports[`BloodListScreen matches snapshot success state: success 1`] = `
+<Styled(FlatList)
+  ItemSeparatorComponent={[Function]}
+  data={
+    Array [
+      Object {
+        "date": "30.07.2019",
+        "id": "5d41b693084f4f55217fd864",
+        "result": Array [
+          Object {
+            "biomarker": "fiber",
+            "color": "#E2D669",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "fats",
+            "color": "#D3235D",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "magnesium",
+            "color": "#547F81",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "vitamins",
+            "color": "#0085FF",
+            "percentage": 25,
+          },
+        ],
+        "title": "Sport",
+      },
+      Object {
+        "date": "17.07.2019",
+        "id": "5d41b693ed44f7ee9f9436d0",
+        "result": Array [
+          Object {
+            "biomarker": "fats",
+            "color": "#e30613",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "carbohydrates",
+            "color": "#D3235D",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "vitamins",
+            "color": "#547F81",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "magnesium",
+            "color": "#0085FF",
+            "percentage": 25,
+          },
+        ],
+        "title": "Healthcare",
+      },
+      Object {
+        "date": "08.07.2019",
+        "id": "5d41b6938f1360cdde5ecc89",
+        "result": Array [
+          Object {
+            "biomarker": "protein",
+            "color": "#E2D669",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "vitamins",
+            "color": "#ffcc00",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "magnesium",
+            "color": "#e30613",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "carbohydrates",
+            "color": "#0085FF",
+            "percentage": 25,
+          },
+        ],
+        "title": "Advanced",
+      },
+    ]
   }
->
-  <Text>
-    BloodListScreen
-  </Text>
-  <Button
-    onPress={[Function]}
-    title="Go to results screen"
-  />
-</View>
+  keyExtractor={[Function]}
+  renderItem={[Function]}
+/>
 `;
