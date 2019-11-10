@@ -1,86 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListItem matches snapshot 1`] = `
-Array [
-  <Styled(View)
-    key="fats-#e30613"
-  >
-    <Styled(View)>
-      <Text>
-        fats
-      </Text>
-    </Styled(View)>
-    <Styled(View)>
-      <Text>
-        25%
-      </Text>
-      <Styled(View)>
-        <Styled(View)
-          color="#e30613"
-          percentage={35}
-        />
-      </Styled(View)>
-    </Styled(View)>
-  </Styled(View)>,
-  <Styled(View)
-    key="carbohydrates-#D3235D"
-  >
-    <Styled(View)>
-      <Text>
-        carbohydrates
-      </Text>
-    </Styled(View)>
-    <Styled(View)>
-      <Text>
-        25%
-      </Text>
-      <Styled(View)>
-        <Styled(View)
-          color="#D3235D"
-          percentage={35}
-        />
-      </Styled(View)>
-    </Styled(View)>
-  </Styled(View)>,
-  <Styled(View)
-    key="vitamins-#547F81"
-  >
-    <Styled(View)>
-      <Text>
-        vitamins
-      </Text>
-    </Styled(View)>
-    <Styled(View)>
-      <Text>
-        25%
-      </Text>
-      <Styled(View)>
-        <Styled(View)
-          color="#547F81"
-          percentage={35}
-        />
-      </Styled(View)>
-    </Styled(View)>
-  </Styled(View)>,
-  <Styled(View)
-    key="magnesium-#0085FF"
-  >
-    <Styled(View)>
-      <Text>
-        magnesium
-      </Text>
-    </Styled(View)>
-    <Styled(View)>
-      <Text>
-        25%
-      </Text>
-      <Styled(View)>
-        <Styled(View)
-          color="#0085FF"
-          percentage={35}
-        />
-      </Styled(View)>
-    </Styled(View)>
-  </Styled(View)>,
-]
+<Fragment>
+  <Styled(View)>
+    <Styled(View)
+      color="#e30613"
+      key="#e30613-25"
+      percentage={25}
+    />
+    <Styled(View)
+      color="#D3235D"
+      key="#D3235D-25"
+      percentage={25}
+    />
+    <Styled(View)
+      color="#547F81"
+      key="#547F81-25"
+      percentage={25}
+    />
+    <Styled(View)
+      color="#0085FF"
+      key="#0085FF-25"
+      percentage={25}
+    />
+  </Styled(View)>
+  <Styled(Styled(View))>
+    <DiagramLabel
+      key="fats-#e30613"
+      result={
+        Object {
+          "biomarker": "fats",
+          "color": "#e30613",
+          "percentage": 25,
+        }
+      }
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+    <DiagramLabel
+      key="carbohydrates-#D3235D"
+      result={
+        Object {
+          "biomarker": "carbohydrates",
+          "color": "#D3235D",
+          "percentage": 25,
+        }
+      }
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+    <DiagramLabel
+      key="vitamins-#547F81"
+      result={
+        Object {
+          "biomarker": "vitamins",
+          "color": "#547F81",
+          "percentage": 25,
+        }
+      }
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+    <DiagramLabel
+      key="magnesium-#0085FF"
+      result={
+        Object {
+          "biomarker": "magnesium",
+          "color": "#0085FF",
+          "percentage": 25,
+        }
+      }
+      style={
+        Object {
+          "width": "50%",
+        }
+      }
+    />
+  </Styled(Styled(View))>
+</Fragment>
 `;

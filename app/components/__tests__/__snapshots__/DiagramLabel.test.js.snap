@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DiagramLabel matches snapshot 1`] = `
+<Styled(View)
+  style={null}
+>
+  <Styled(View)
+    color="#e30613"
+  />
+  <Styled(Styled(Text))>
+    25%
+  </Styled(Styled(Text))>
+  <Styled(Styled(Text))>
+    fats
+  </Styled(Styled(Text))>
+</Styled(View)>
+`;
