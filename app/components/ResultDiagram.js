@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import PropType from 'prop-types';
 import styled from 'styled-components/native';
+import Text from './base/Text';
 import { resultType } from '../types';
 
 export default function ResultDiagram({ result, style }) {

@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
+import Text from './base/Text';
 import { bloodListItemType } from '../types';
 import ResultDiagram from './ResultDiagram';
 
