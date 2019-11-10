@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ListItem matches snapshot 1`] = `
+<Styled(View)>
+  <Styled(Styled(View))>
+    <Styled(Text)>
+      Healthcare
+    </Styled(Text)>
+    <Styled(Text)>
+      17.07.2019
+    </Styled(Text)>
+  </Styled(Styled(View))>
+  <Styled(ResultDiagram)
+    result={
+      Array [
+        Object {
+          "biomarker": "fats",
+          "color": "#e30613",
+          "percentage": 25,
+        },
+        Object {
+          "biomarker": "carbohydrates",
+          "color": "#D3235D",
+          "percentage": 25,
+        },
+        Object {
+          "biomarker": "vitamins",
+          "color": "#547F81",
+          "percentage": 25,
+        },
+        Object {
+          "biomarker": "magnesium",
+          "color": "#0085FF",
+          "percentage": 25,
+        },
+      ]
+    }
+  />
+</Styled(View)>
+`;
