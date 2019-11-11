@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationHeaderImage matches snapshot 1`] = `
+<Styled(View)>
+  <Styled(Image)
+    resizeMethod="resize"
+    resizeMode="contain"
+    source={1}
+  />
+</Styled(View)>
+`;

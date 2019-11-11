@@ -2,37 +2,52 @@ import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import { SCREENS } from './constants';
-import DNAScreen from './screens/DNAScreen';
 import BloodListScreen from './screens/BloodListScreen';
-import ProfileScreen from './screens/ProfileScreen';
 import BloodResultScreen from './screens/BloodResultScreen';
-
-const BloodStackNavigation = createStackNavigator({
-  [SCREENS.BLOOD_LIST]: {
-    screen: BloodListScreen,
-  },
-  [SCREENS.BLOOD_RESULT]: {
-    screen: BloodResultScreen,
-  },
-});
+import NavigationHeaderImage from './components/navigation/NavigationHeaderImage';
+import NavigationBottomListIcon from './components/navigation/NavigationBottomListIcon';
+import NavigationBottomResultIcon from './components/navigation/NavigationBottomResultIcon';
+import { theme } from './theme';
 
 const MainBottomNavigation = createBottomTabNavigator(
   {
-    [SCREENS.DNA]: {
-      screen: DNAScreen,
+    [SCREENS.BLOOD_LIST]: {
+      screen: BloodListScreen,
+      navigationOptions: {
+        tabBarLabel: 'List',
+        tabBarIcon: NavigationBottomListIcon,
+      },
     },
-    Blood: {
-      screen: BloodStackNavigation,
-    },
-    [SCREENS.PROFILE]: {
-      screen: ProfileScreen,
+    [SCREENS.BLOOD_RESULT]: {
+      screen: BloodResultScreen,
+      navigationOptions: {
+        tabBarLabel: 'Results',
+        tabBarIcon: NavigationBottomResultIcon,
+      },
     },
   },
   {
-    initialRouteName: 'Blood',
+    initialRouteName: SCREENS.BLOOD_RESULT,
+    tabBarOptions: {
+      activeTintColor: theme.primary,
+    },
   },
 );
 
-const Routes = createAppContainer(MainBottomNavigation);
+const AppStackNavigation = createStackNavigator(
+  {
+    bottomTabNavigator: {
+      screen: MainBottomNavigation,
+      navigationOptions: {
+        headerTitle: NavigationHeaderImage,
+      },
+    },
+  },
+  {
+    headerLayoutPreset: 'center',
+  },
+);
+
+const Routes = createAppContainer(AppStackNavigation);
 
 export default Routes;

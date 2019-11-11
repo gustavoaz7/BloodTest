@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavigationBottomResultIcon matches snapshot 1`] = `
+<Icon
+  allowFontScaling={false}
+  color="#f5785a"
+  name="bar-chart-2"
+  size={26}
+/>
+`;

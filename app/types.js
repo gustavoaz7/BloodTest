@@ -1,5 +1,17 @@
 import PropTypes from 'prop-types';
 
+export const themeType = PropTypes.shape({
+  primary: PropTypes.string.isRequired,
+  secondary: PropTypes.string.isRequired,
+  fontFamily: PropTypes.string.isRequired,
+});
+
+export const tabBarIconTypes = PropTypes.shape({
+  focused: PropTypes.bool.isRequired,
+  horizontal: PropTypes.bool.isRequired,
+  tintColor: PropTypes.string.isRequired,
+});
+
 export const stackNavigationType = PropTypes.shape({
   state: PropTypes.object.isRequired,
   dispatch: PropTypes.func.isRequired,
