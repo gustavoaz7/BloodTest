@@ -2,7 +2,7 @@ import React from 'react';
 import { View, ViewPropTypes } from 'react-native';
 import styled from 'styled-components/native';
 import Text from './base/Text';
-import { resultType } from '../types';
+import { testResultType } from '../types';
 
 export default function DiagramLabel({ style, result: { color, percentage, biomarker } }) {
   return (
@@ -33,7 +33,7 @@ const Percentage = styled(Text)`
 const Biomarker = styled(Text)``;
 
 DiagramLabel.propTypes = {
-  result: resultType.isRequired,
+  result: testResultType.isRequired,
   style: ViewPropTypes.style,
 };
 

@@ -3,14 +3,17 @@ import { View, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import DiagramLabel from './DiagramLabel';
-import { resultType } from '../types';
+import { testResultType } from '../types';
 
 export default function ResultDiagram({ result }) {
   return (
     <>
       <BarContainer>
-        {result.map(({ color, percentage }) => (
-          <BarSection key={`${color}-${percentage}`} color={color} percentage={percentage} />
+        {result.map(({ color, percentage }, index) => (
+          <Bar key={`${color}-${percentage}`}>
+            {index !== 0 && <Separator />}
+            <BarSection color={color} percentage={percentage} />
+          </Bar>
         ))}
       </BarContainer>
       <LabelBox>
@@ -36,12 +39,20 @@ const Row = styled(View)`
   flex-direction: row;
 `;
 
+const Bar = styled(Row)`
+  flex: 1;
+`;
+
 const BarContainer = styled(View)`
   flex-direction: row;
   height: 16px;
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 8px;
+`;
+
+const Separator = styled(View)`
+  width: 1px;
 `;
 
 const BarSection = styled(View)`
@@ -55,5 +66,5 @@ const LabelBox = styled(Row)`
 `;
 
 ResultDiagram.propTypes = {
-  result: PropTypes.arrayOf(resultType).isRequired,
+  result: PropTypes.arrayOf(testResultType).isRequired,
 };

@@ -28,7 +28,7 @@ export const stackNavigationType = PropTypes.shape({
   router: PropTypes.func,
 });
 
-export const resultType = PropTypes.shape({
+export const testResultType = PropTypes.shape({
   biomarker: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   percentage: PropTypes.number.isRequired,
@@ -38,5 +38,5 @@ export const bloodListItemType = PropTypes.shape({
   id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
-  result: PropTypes.arrayOf(resultType).isRequired,
+  result: PropTypes.arrayOf(testResultType).isRequired,
 });
