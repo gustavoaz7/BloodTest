@@ -1,28 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ListItem matches snapshot 1`] = `
+exports[`ResultDiagram matches snapshot 1`] = `
 <Fragment>
   <Styled(View)>
-    <Styled(View)
-      color="#e30613"
+    <Styled(Styled(View))
       key="#e30613-25"
-      percentage={25}
-    />
-    <Styled(View)
-      color="#D3235D"
+    >
+      <Styled(View)
+        color="#e30613"
+        percentage={25}
+      />
+    </Styled(Styled(View))>
+    <Styled(Styled(View))
       key="#D3235D-25"
-      percentage={25}
-    />
-    <Styled(View)
-      color="#547F81"
+    >
+      <Styled(View) />
+      <Styled(View)
+        color="#D3235D"
+        percentage={25}
+      />
+    </Styled(Styled(View))>
+    <Styled(Styled(View))
       key="#547F81-25"
-      percentage={25}
-    />
-    <Styled(View)
-      color="#0085FF"
+    >
+      <Styled(View) />
+      <Styled(View)
+        color="#547F81"
+        percentage={25}
+      />
+    </Styled(Styled(View))>
+    <Styled(Styled(View))
       key="#0085FF-25"
-      percentage={25}
-    />
+    >
+      <Styled(View) />
+      <Styled(View)
+        color="#0085FF"
+        percentage={25}
+      />
+    </Styled(Styled(View))>
   </Styled(View)>
   <Styled(Styled(View))>
     <DiagramLabel

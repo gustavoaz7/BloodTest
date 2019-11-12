@@ -1,21 +1,136 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BloodResultScreen matches snapshot 1`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-      "flex": 1,
-      "justifyContent": "center",
-    }
+exports[`BloodResultScreen matches snapshot error state: error 1`] = `""`;
+
+exports[`BloodResultScreen matches snapshot loading state: loading 1`] = `
+<Loading
+  color="#f5785a"
+  size="large"
+/>
+`;
+
+exports[`BloodResultScreen matches snapshot success state: success 1`] = `
+<Styled(FlatList)
+  ItemSeparatorComponent={[Function]}
+  data={
+    Array [
+      Object {
+        "email": "Berniece.Haley42@hotmail.com",
+        "id": "0b82fed2-a091-4318-ba02-4d5e6192d6f7",
+        "name": "Citlalli Kuhic",
+        "samples": Array [
+          Object {
+            "time": "morning",
+            "value": 0.48,
+          },
+          Object {
+            "time": "afternoon",
+            "value": 0.39,
+          },
+          Object {
+            "time": "evening",
+            "value": 0.19,
+          },
+        ],
+      },
+      Object {
+        "email": "Teagan_Ratke83@gmail.com",
+        "id": "acf65e6a-1878-4cd9-bf6f-440dafd4fa18",
+        "name": "Rachael Lehner",
+        "samples": Array [
+          Object {
+            "time": "morning",
+            "value": 0.67,
+          },
+          Object {
+            "time": "afternoon",
+            "value": 0.31,
+          },
+          Object {
+            "time": "evening",
+            "value": 0.24,
+          },
+        ],
+      },
+      Object {
+        "email": "Palma17@yahoo.com",
+        "id": "ca285be1-0d6b-42f6-bfec-b3aeaa2aaf8f",
+        "name": "Willa Quitzon",
+        "samples": Array [
+          Object {
+            "time": "morning",
+            "value": 0.73,
+          },
+          Object {
+            "time": "afternoon",
+            "value": 0.19,
+          },
+          Object {
+            "time": "evening",
+            "value": 0.14,
+          },
+        ],
+      },
+      Object {
+        "email": "Giuseppe19@hotmail.com",
+        "id": "95eba822-a7b3-4938-8c94-005733701c1f",
+        "name": "Miss Audie Moore",
+        "samples": Array [
+          Object {
+            "time": "morning",
+            "value": 0.26,
+          },
+          Object {
+            "time": "afternoon",
+            "value": 0.09,
+          },
+          Object {
+            "time": "evening",
+            "value": 0.29,
+          },
+        ],
+      },
+      Object {
+        "email": "Maeve_Jacobs14@yahoo.com",
+        "id": "4fea89aa-bcf7-42b0-a5e8-202fc03a02fe",
+        "name": "Yesenia Nicolas",
+        "samples": Array [
+          Object {
+            "time": "morning",
+            "value": 0.78,
+          },
+          Object {
+            "time": "afternoon",
+            "value": 0.26,
+          },
+          Object {
+            "time": "evening",
+            "value": 0.24,
+          },
+        ],
+      },
+      Object {
+        "email": "Johnson90@yahoo.com",
+        "id": "17d11f05-2580-49b5-bb17-b786209c4792",
+        "name": "Ms. Harmon Kunze",
+        "samples": Array [
+          Object {
+            "time": "morning",
+            "value": 0.47,
+          },
+          Object {
+            "time": "afternoon",
+            "value": 0.09,
+          },
+          Object {
+            "time": "evening",
+            "value": 0.09,
+          },
+        ],
+      },
+    ]
   }
->
-  <Text>
-    BloodResultScreen
-  </Text>
-  <Button
-    onPress={[Function]}
-    title="Back to blood list"
-  />
-</View>
+  keyExtractor={[Function]}
+  renderItem={[Function]}
+/>
 `;

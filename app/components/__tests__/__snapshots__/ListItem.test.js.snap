@@ -1,14 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListItem matches snapshot 1`] = `
-<Styled(View)>
+<Card
+  style={null}
+>
   <Styled(Styled(View))>
-    <Styled(Text)>
+    <Styled(Styled(Text))>
       Healthcare
-    </Styled(Text)>
-    <Styled(Text)>
+    </Styled(Styled(Text))>
+    <Styled(Styled(Text))>
       17.07.2019
-    </Styled(Text)>
+    </Styled(Styled(Text))>
   </Styled(Styled(View))>
   <Styled(ResultDiagram)
     result={
@@ -36,5 +38,5 @@ exports[`ListItem matches snapshot 1`] = `
       ]
     }
   />
-</Styled(View)>
+</Card>
 `;

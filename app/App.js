@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
+import { ThemeProvider } from 'styled-components/native';
 import Routes from './routes';
+import { theme } from './theme';
 
 const postGroteskLight = require('../assets/fonts/PostGrotesk-Light.ttf');
 
@@ -24,6 +26,10 @@ export default class AppContainer extends Component {
 
     if (!isLoadingComplete) return <AppLoading />;
 
-    return <Routes />;
+    return (
+      <ThemeProvider theme={theme}>
+        <Routes />
+      </ThemeProvider>
+    );
   }
 }

@@ -4,7 +4,7 @@ import ResultDiagram from '../ResultDiagram';
 import DiagramLabel from '../DiagramLabel';
 import { testsMock } from '../../mocks/tests';
 
-describe('ListItem', () => {
+describe('ResultDiagram', () => {
   const { result } = testsMock[0];
 
   it('renders without crashing', () => {
