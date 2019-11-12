@@ -1,29 +1,22 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View } from 'react-native';
 import styled from 'styled-components/native';
 import Text from './base/Text';
+import Card from './base/Card';
 import { bloodListItemType } from '../types';
 import ResultDiagram from './ResultDiagram';
 
 export default function ListItem({ item: { title, date, result } }) {
   return (
-    <Container>
+    <Card>
       <Header>
         <Bold>{title}</Bold>
         <Date>{date}</Date>
       </Header>
       <ResultDiagramUI result={result} />
-    </Container>
+    </Card>
   );
 }
-
-const Container = styled(View)`
-  padding: 10px 16px;
-  border-radius: 12px;
-  background-color: white;
-  border-width: ${StyleSheet.hairlineWidth};
-  border-color: 'rgba(0, 0, 0, 0.5)';
-`;
 
 const Row = styled(View)`
   flex-direction: row;
@@ -31,7 +24,7 @@ const Row = styled(View)`
 
 const Header = styled(Row)`
   justify-content: space-between;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 `;
 
 const Bold = styled(Text)`

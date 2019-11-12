@@ -40,3 +40,15 @@ export const bloodListItemType = PropTypes.shape({
   date: PropTypes.string.isRequired,
   result: PropTypes.arrayOf(testResultType).isRequired,
 });
+
+export const sampleType = PropTypes.shape({
+  time: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+});
+
+export const resultType = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  samples: PropTypes.arrayOf(sampleType).isRequired,
+});
