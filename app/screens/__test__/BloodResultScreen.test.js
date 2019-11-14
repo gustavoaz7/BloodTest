@@ -3,22 +3,27 @@ import { shallow } from 'enzyme';
 import axios from 'axios';
 import BloodResultScreen from '../BloodResultScreen';
 import { resultsMock } from '../../mocks/results';
+import { flushPromises } from '../../utils/tests';
 
 describe('BloodResultScreen', () => {
-  const testsResponse = { data: resultsMock };
+  const resultResponse = { data: resultsMock };
+  const axiosMock = jest.fn().mockImplementation(() => Promise.resolve(resultResponse));
+
+  beforeEach(() => {
+    axiosMock.mockClear();
+    axios.get = axiosMock;
+  });
 
   it('renders without crashing', () => {
     shallow(<BloodResultScreen />);
   });
 
   it('loads sorted blood tests', async () => {
-    const mock = jest.fn(() => testsResponse);
-    axios.get = mock;
     const wrapper = shallow(<BloodResultScreen />);
 
-    await Promise.resolve();
+    await flushPromises();
 
-    expect(mock).toHaveBeenCalled();
+    expect(axiosMock).toHaveBeenCalled();
     expect(wrapper.state('results')).toEqual(resultsMock);
   });
 
@@ -35,16 +40,14 @@ describe('BloodResultScreen', () => {
       });
       axios.get = mock;
       const wrapper = shallow(<BloodResultScreen />);
-      await Promise.resolve();
+      await flushPromises();
 
       expect(wrapper).toMatchSnapshot('error');
     });
 
     it('success state', async () => {
-      const mock = jest.fn(() => testsResponse);
-      axios.get = mock;
       const wrapper = shallow(<BloodResultScreen />);
-      await Promise.resolve();
+      await flushPromises();
 
       expect(wrapper).toMatchSnapshot('success');
     });

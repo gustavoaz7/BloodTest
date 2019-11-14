@@ -12,6 +12,11 @@ exports[`BloodListScreen matches snapshot loading state: loading 1`] = `
 exports[`BloodListScreen matches snapshot success state: success 1`] = `
 <Styled(FlatList)
   ItemSeparatorComponent={[Function]}
+  contentContainerStyle={
+    Object {
+      "padding": 12,
+    }
+  }
   data={
     Array [
       Object {
@@ -98,6 +103,8 @@ exports[`BloodListScreen matches snapshot success state: success 1`] = `
     ]
   }
   keyExtractor={[Function]}
+  onRefresh={[Function]}
+  refreshing={false}
   renderItem={[Function]}
 />
 `;

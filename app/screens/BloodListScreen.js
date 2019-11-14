@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { View, FlatList, Alert } from 'react-native';
-import axios from 'axios';
+import { View, FlatList, Alert, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import Loading from '../components/Loading';
 import ListItem from '../components/ListItem';
+import { getBloodList } from '../services/api';
 
 export default class BloodListScreen extends Component {
   constructor(props) {
@@ -12,6 +12,7 @@ export default class BloodListScreen extends Component {
       tests: [],
       error: false,
       loading: true,
+      refreshing: false,
     };
   }
 
@@ -21,13 +22,18 @@ export default class BloodListScreen extends Component {
 
   loadTests = async () => {
     try {
-      const { data: tests } = await axios.get('http://192.168.0.13:4000/tests');
+      const tests = await getBloodList();
       const sortedTests = this.sortTests(tests);
-      this.setState({ tests: sortedTests, loading: false, error: false });
+      this.setState({ tests: sortedTests, loading: false, error: false, refreshing: false });
     } catch (e) {
-      this.setState({ tests: [], error: true, loading: false });
+      this.setState({ tests: [], error: true, loading: false, refreshing: false });
       console.warn('BloodListScreen load tests error - ', e);
     }
+  };
+
+  handleRefresh = () => {
+    this.setState({ refreshing: true });
+    this.loadTests();
   };
 
   sortTests(tests) {
@@ -72,7 +78,7 @@ export default class BloodListScreen extends Component {
   }
 
   render() {
-    const { tests, loading, error } = this.state;
+    const { tests, loading, error, refreshing } = this.state;
     if (loading) return <Loading />;
     if (error) {
       this.handleError();
@@ -84,16 +90,24 @@ export default class BloodListScreen extends Component {
         renderItem={this.renderItem}
         keyExtractor={this.keyExtractor}
         ItemSeparatorComponent={this.renderSeparator}
+        refreshing={refreshing}
+        onRefresh={this.handleRefresh}
+        contentContainerStyle={styles.contentStyle}
       />
     );
   }
 }
 
-const FlatListUI = styled(FlatList)`
-  padding: 12px;
+export const FlatListUI = styled(FlatList)`
   background-color: 'rgba(0, 0, 0, 0.05)';
 `;
 
 const Separator = styled(View)`
   height: 12px;
 `;
+
+const styles = StyleSheet.create({
+  contentStyle: {
+    padding: 12,
+  },
+});
