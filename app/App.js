@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { AppLoading } from 'expo';
 import * as Font from 'expo-font';
+import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components/native';
+import store from './redux/store';
 import Routes from './routes';
 import { theme } from './theme';
 
@@ -27,9 +29,11 @@ export default class AppContainer extends Component {
     if (!isLoadingComplete) return <AppLoading />;
 
     return (
-      <ThemeProvider theme={theme}>
-        <Routes />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Routes />
+        </ThemeProvider>
+      </Provider>
     );
   }
 }
