@@ -9,8 +9,8 @@ export default function ResultDiagram({ result }) {
   return (
     <>
       <BarContainer>
-        {result.map(({ color, percentage }, index) => (
-          <Bar key={`${color}-${percentage}`}>
+        {result.map(({ color, percentage, biomarker }, index) => (
+          <Bar key={`${biomarker}-${color}-${percentage}`}>
             {index !== 0 && <Separator />}
             <BarSection color={color} percentage={percentage} />
           </Bar>
