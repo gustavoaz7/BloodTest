@@ -2,7 +2,7 @@ import { createAppContainer } from 'react-navigation';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import { SCREENS } from './constants';
-import BloodListScreen from './screens/BloodListScreen';
+import ConnectedBloodListScreen from './containers/ConnectedBloodListScreen';
 import BloodResultScreen from './screens/BloodResultScreen';
 import NavigationHeaderImage from './components/navigation/NavigationHeaderImage';
 import NavigationBottomListIcon from './components/navigation/NavigationBottomListIcon';
@@ -12,7 +12,7 @@ import { theme } from './theme';
 const MainBottomNavigation = createBottomTabNavigator(
   {
     [SCREENS.BLOOD_LIST]: {
-      screen: BloodListScreen,
+      screen: ConnectedBloodListScreen,
       navigationOptions: {
         tabBarLabel: 'List',
         tabBarIcon: NavigationBottomListIcon,

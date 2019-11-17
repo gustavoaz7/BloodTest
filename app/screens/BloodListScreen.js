@@ -2,15 +2,12 @@ import React, { Component } from 'react';
 import { View, FlatList, Alert, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import { connect } from 'react-redux';
-import { loadBloodListAC } from '../redux/BloodList/actionCreators';
-import { getBloodListTests } from '../redux/BloodList/getters';
 import { isRejected } from '../redux/utils/status';
 import { statusType } from '../types';
 import ListItem from '../components/ListItem';
 import PendingWrapper from '../components/PendingWrapper';
 
-export class BloodListScreen extends Component {
+export default class BloodListScreen extends Component {
   static propTypes = {
     loadBloodList: PropTypes.func.isRequired,
     tests: PropTypes.shape({
@@ -94,16 +91,3 @@ const styles = StyleSheet.create({
     padding: 12,
   },
 });
-
-const mapStateToProps = state => ({
-  tests: getBloodListTests(state),
-});
-
-const mapDispatchToProps = {
-  loadBloodList: loadBloodListAC,
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(BloodListScreen);
