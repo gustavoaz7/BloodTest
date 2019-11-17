@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 const getState = state => state;
 
-export const getBloodList = createSelector(
+export const getBloodListTests = createSelector(
   getState,
-  ({ bloodList }) => bloodList,
+  ({ bloodList }) => bloodList.tests,
 );

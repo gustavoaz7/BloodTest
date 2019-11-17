@@ -7,8 +7,8 @@ import {
 import {
   LOAD_BLOOD_LIST_PENDING_ACTION,
   LOAD_BLOOD_LIST_PENDING_STATE,
-  LOAD_BLOOD_LIST_SUCCESS_ACTION,
-  LOAD_BLOOD_LIST_SUCCESS_STATE,
+  LOAD_BLOOD_LIST_FULFILLED_ACTION,
+  LOAD_BLOOD_LIST_FULFILLED_STATE,
   LOAD_BLOOD_LIST_REJECTED_ACTION,
   LOAD_BLOOD_LIST_REJECTED_STATE,
 } from '../test.data';
@@ -24,8 +24,8 @@ describe('Redux - BloodList - reducer', () => {
   });
 
   it(`should handle ${BLOOD_LIST_LOAD_FULFILLED}`, () => {
-    const state = reducer(initialState, LOAD_BLOOD_LIST_SUCCESS_ACTION);
-    expect(state).toEqual(LOAD_BLOOD_LIST_SUCCESS_STATE);
+    const state = reducer(initialState, LOAD_BLOOD_LIST_FULFILLED_ACTION);
+    expect(state).toEqual(LOAD_BLOOD_LIST_FULFILLED_STATE);
   });
 
   it(`should handle ${BLOOD_LIST_LOAD_REJECTED}`, () => {

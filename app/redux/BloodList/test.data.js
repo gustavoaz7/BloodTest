@@ -13,11 +13,11 @@ export const LOAD_BLOOD_LIST_PENDING_STATE = {
   tests: { value: null, status: ActionType.Pending },
 };
 
-export const LOAD_BLOOD_LIST_SUCCESS_ACTION = {
+export const LOAD_BLOOD_LIST_FULFILLED_ACTION = {
   type: BLOOD_LIST_LOAD_FULFILLED,
   payload: testsMock,
 };
-export const LOAD_BLOOD_LIST_SUCCESS_STATE = {
+export const LOAD_BLOOD_LIST_FULFILLED_STATE = {
   ...initialState,
   tests: { value: testsMock, status: ActionType.Fulfilled },
 };
