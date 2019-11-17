@@ -6,4 +6,4 @@ const fetch = path => axios.get(`${BASE_URL}/${path}`);
 
 export const fetchBloodList = () => fetch('tests').then(({ data }) => data);
 
-export const fetchBloodResult = () => fetch('results').then(({ data }) => data);
+export const fetchBloodResults = () => fetch('results').then(({ data }) => data);

@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import { createStackNavigator } from 'react-navigation-stack';
 import { SCREENS } from './constants';
 import ConnectedBloodListScreen from './containers/ConnectedBloodListScreen';
-import BloodResultScreen from './screens/BloodResultScreen';
+import ConnectedBloodResultsScreen from './containers/ConnectedBloodResultsScreen';
 import NavigationHeaderImage from './components/navigation/NavigationHeaderImage';
 import NavigationBottomListIcon from './components/navigation/NavigationBottomListIcon';
 import NavigationBottomResultIcon from './components/navigation/NavigationBottomResultIcon';
@@ -18,8 +18,8 @@ const MainBottomNavigation = createBottomTabNavigator(
         tabBarIcon: NavigationBottomListIcon,
       },
     },
-    [SCREENS.BLOOD_RESULT]: {
-      screen: BloodResultScreen,
+    [SCREENS.BLOOD_RESULTS]: {
+      screen: ConnectedBloodResultsScreen,
       navigationOptions: {
         tabBarLabel: 'Results',
         tabBarIcon: NavigationBottomResultIcon,
@@ -27,7 +27,7 @@ const MainBottomNavigation = createBottomTabNavigator(
     },
   },
   {
-    initialRouteName: SCREENS.BLOOD_LIST,
+    initialRouteName: SCREENS.BLOOD_RESULTS,
     tabBarOptions: {
       activeTintColor: theme.primary,
     },

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { BloodListScreen, FlatListUI } from '../BloodListScreen';
+import BloodListScreen, { FlatListUI } from '../BloodListScreen';
 import {
   LOAD_BLOOD_LIST_FULFILLED_STATE as fulfilledState,
   LOAD_BLOOD_LIST_PENDING_STATE as pendingState,
