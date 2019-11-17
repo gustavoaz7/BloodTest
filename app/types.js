@@ -55,3 +55,8 @@ export const resultType = PropTypes.shape({
 });
 
 export const statusType = PropTypes.PropTypes.oneOf(Object.values(ActionType));
+
+export const stateWithStatusType = PropTypes.shape({
+  value: PropTypes.any,
+  status: statusType,
+});

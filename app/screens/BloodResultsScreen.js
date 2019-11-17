@@ -5,15 +5,12 @@ import styled from 'styled-components/native';
 import BloodResultItem from '../components/BloodResultItem';
 import PendingWrapper from '../components/PendingWrapper';
 import { isRejected } from '../redux/utils/status';
-import { statusType } from '../types';
+import { stateWithStatusType } from '../types';
 
 export default class BloodResultScreen extends Component {
   static propTypes = {
     loadBloodResults: PropTypes.func.isRequired,
-    results: PropTypes.shape({
-      value: PropTypes.any,
-      status: statusType,
-    }).isRequired,
+    results: stateWithStatusType.isRequired,
   };
 
   constructor(props) {

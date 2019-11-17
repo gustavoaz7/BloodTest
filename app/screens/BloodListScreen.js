@@ -3,17 +3,14 @@ import { View, FlatList, Alert, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { isRejected } from '../redux/utils/status';
-import { statusType } from '../types';
+import { stateWithStatusType } from '../types';
 import ListItem from '../components/ListItem';
 import PendingWrapper from '../components/PendingWrapper';
 
 export default class BloodListScreen extends Component {
   static propTypes = {
     loadBloodList: PropTypes.func.isRequired,
-    tests: PropTypes.shape({
-      value: PropTypes.any,
-      status: statusType,
-    }).isRequired,
+    tests: stateWithStatusType.isRequired,
   };
 
   constructor(props) {
