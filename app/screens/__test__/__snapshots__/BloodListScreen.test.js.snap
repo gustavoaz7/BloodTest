@@ -1,110 +1,221 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BloodListScreen matches snapshot error state: error 1`] = `""`;
-
-exports[`BloodListScreen matches snapshot loading state: loading 1`] = `
-<Loading
-  color="#f5785a"
-  size="large"
-/>
-`;
-
-exports[`BloodListScreen matches snapshot success state: success 1`] = `
-<Styled(FlatList)
-  ItemSeparatorComponent={[Function]}
-  contentContainerStyle={
+exports[`BloodListScreen matches snapshot pending state: pending 1`] = `
+<PendingWrapper
+  loadingProps={null}
+  value={
     Object {
-      "padding": 12,
+      "status": "PENDING",
+      "value": null,
     }
   }
-  data={
-    Array [
+>
+  <Styled(FlatList)
+    ItemSeparatorComponent={[Function]}
+    contentContainerStyle={
       Object {
-        "date": "30.07.2019",
-        "id": "5d41b693084f4f55217fd864",
-        "result": Array [
-          Object {
-            "biomarker": "fiber",
-            "color": "#E2D669",
-            "percentage": 25,
-          },
-          Object {
-            "biomarker": "fats",
-            "color": "#D3235D",
-            "percentage": 25,
-          },
-          Object {
-            "biomarker": "magnesium",
-            "color": "#547F81",
-            "percentage": 25,
-          },
-          Object {
-            "biomarker": "vitamins",
-            "color": "#0085FF",
-            "percentage": 25,
-          },
-        ],
-        "title": "Sport",
-      },
-      Object {
-        "date": "17.07.2019",
-        "id": "5d41b693ed44f7ee9f9436d0",
-        "result": Array [
-          Object {
-            "biomarker": "fats",
-            "color": "#e30613",
-            "percentage": 25,
-          },
-          Object {
-            "biomarker": "carbohydrates",
-            "color": "#D3235D",
-            "percentage": 25,
-          },
-          Object {
-            "biomarker": "vitamins",
-            "color": "#547F81",
-            "percentage": 25,
-          },
-          Object {
-            "biomarker": "magnesium",
-            "color": "#0085FF",
-            "percentage": 25,
-          },
-        ],
-        "title": "Healthcare",
-      },
-      Object {
-        "date": "08.07.2019",
-        "id": "5d41b6938f1360cdde5ecc89",
-        "result": Array [
-          Object {
-            "biomarker": "protein",
-            "color": "#E2D669",
-            "percentage": 25,
-          },
-          Object {
-            "biomarker": "vitamins",
-            "color": "#ffcc00",
-            "percentage": 25,
-          },
-          Object {
-            "biomarker": "magnesium",
-            "color": "#e30613",
-            "percentage": 25,
-          },
-          Object {
-            "biomarker": "carbohydrates",
-            "color": "#0085FF",
-            "percentage": 25,
-          },
-        ],
-        "title": "Advanced",
-      },
-    ]
+        "padding": 12,
+      }
+    }
+    data={null}
+    keyExtractor={[Function]}
+    onRefresh={[Function]}
+    refreshing={false}
+    renderItem={[Function]}
+  />
+</PendingWrapper>
+`;
+
+exports[`BloodListScreen matches snapshot rejected state: rejected 1`] = `""`;
+
+exports[`BloodListScreen matches snapshot success state: success 1`] = `
+<PendingWrapper
+  loadingProps={null}
+  value={
+    Object {
+      "status": "FULFILLED",
+      "value": Array [
+        Object {
+          "date": "17.07.2019",
+          "id": "5d41b693ed44f7ee9f9436d0",
+          "result": Array [
+            Object {
+              "biomarker": "fats",
+              "color": "#e30613",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "carbohydrates",
+              "color": "#D3235D",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "vitamins",
+              "color": "#547F81",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "magnesium",
+              "color": "#0085FF",
+              "percentage": 25,
+            },
+          ],
+          "title": "Healthcare",
+        },
+        Object {
+          "date": "08.07.2019",
+          "id": "5d41b6938f1360cdde5ecc89",
+          "result": Array [
+            Object {
+              "biomarker": "protein",
+              "color": "#E2D669",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "vitamins",
+              "color": "#ffcc00",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "magnesium",
+              "color": "#e30613",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "carbohydrates",
+              "color": "#0085FF",
+              "percentage": 25,
+            },
+          ],
+          "title": "Advanced",
+        },
+        Object {
+          "date": "30.07.2019",
+          "id": "5d41b693084f4f55217fd864",
+          "result": Array [
+            Object {
+              "biomarker": "fiber",
+              "color": "#E2D669",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "fats",
+              "color": "#D3235D",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "magnesium",
+              "color": "#547F81",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "vitamins",
+              "color": "#0085FF",
+              "percentage": 25,
+            },
+          ],
+          "title": "Sport",
+        },
+      ],
+    }
   }
-  keyExtractor={[Function]}
-  onRefresh={[Function]}
-  refreshing={false}
-  renderItem={[Function]}
-/>
+>
+  <Styled(FlatList)
+    ItemSeparatorComponent={[Function]}
+    contentContainerStyle={
+      Object {
+        "padding": 12,
+      }
+    }
+    data={
+      Array [
+        Object {
+          "date": "17.07.2019",
+          "id": "5d41b693ed44f7ee9f9436d0",
+          "result": Array [
+            Object {
+              "biomarker": "fats",
+              "color": "#e30613",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "carbohydrates",
+              "color": "#D3235D",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "vitamins",
+              "color": "#547F81",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "magnesium",
+              "color": "#0085FF",
+              "percentage": 25,
+            },
+          ],
+          "title": "Healthcare",
+        },
+        Object {
+          "date": "08.07.2019",
+          "id": "5d41b6938f1360cdde5ecc89",
+          "result": Array [
+            Object {
+              "biomarker": "protein",
+              "color": "#E2D669",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "vitamins",
+              "color": "#ffcc00",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "magnesium",
+              "color": "#e30613",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "carbohydrates",
+              "color": "#0085FF",
+              "percentage": 25,
+            },
+          ],
+          "title": "Advanced",
+        },
+        Object {
+          "date": "30.07.2019",
+          "id": "5d41b693084f4f55217fd864",
+          "result": Array [
+            Object {
+              "biomarker": "fiber",
+              "color": "#E2D669",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "fats",
+              "color": "#D3235D",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "magnesium",
+              "color": "#547F81",
+              "percentage": 25,
+            },
+            Object {
+              "biomarker": "vitamins",
+              "color": "#0085FF",
+              "percentage": 25,
+            },
+          ],
+          "title": "Sport",
+        },
+      ]
+    }
+    keyExtractor={[Function]}
+    onRefresh={[Function]}
+    refreshing={false}
+    renderItem={[Function]}
+  />
+</PendingWrapper>
 `;

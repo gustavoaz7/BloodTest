@@ -27,7 +27,7 @@ const MainBottomNavigation = createBottomTabNavigator(
     },
   },
   {
-    initialRouteName: SCREENS.BLOOD_RESULT,
+    initialRouteName: SCREENS.BLOOD_LIST,
     tabBarOptions: {
       activeTintColor: theme.primary,
     },
