@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { ActionType } from 'redux-promise-middleware';
 
 export const themeType = PropTypes.shape({
   primary: PropTypes.string.isRequired,
@@ -7,9 +8,9 @@ export const themeType = PropTypes.shape({
 });
 
 export const tabBarIconTypes = PropTypes.shape({
-  focused: PropTypes.bool.isRequired,
-  horizontal: PropTypes.bool.isRequired,
-  tintColor: PropTypes.string.isRequired,
+  focused: PropTypes.bool,
+  horizontal: PropTypes.bool,
+  tintColor: PropTypes.string,
 });
 
 export const stackNavigationType = PropTypes.shape({
@@ -52,3 +53,5 @@ export const resultType = PropTypes.shape({
   email: PropTypes.string.isRequired,
   samples: PropTypes.arrayOf(sampleType).isRequired,
 });
+
+export const statusType = PropTypes.PropTypes.oneOf(Object.values(ActionType));

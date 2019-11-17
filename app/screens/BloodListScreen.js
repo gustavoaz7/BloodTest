@@ -1,56 +1,33 @@
 import React, { Component } from 'react';
 import { View, FlatList, Alert, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import Loading from '../components/Loading';
+import { isRejected } from '../redux/utils/status';
+import { statusType } from '../types';
 import ListItem from '../components/ListItem';
-import { getBloodList } from '../services/api';
+import PendingWrapper from '../components/PendingWrapper';
 
 export default class BloodListScreen extends Component {
+  static propTypes = {
+    loadBloodList: PropTypes.func.isRequired,
+    tests: PropTypes.shape({
+      value: PropTypes.any,
+      status: statusType,
+    }).isRequired,
+  };
+
   constructor(props) {
     super(props);
-    this.state = {
-      tests: [],
-      error: false,
-      loading: true,
-      refreshing: false,
-    };
   }
 
   componentDidMount() {
     this.loadTests();
   }
 
-  loadTests = async () => {
-    try {
-      const tests = await getBloodList();
-      const sortedTests = this.sortTests(tests);
-      this.setState({ tests: sortedTests, loading: false, error: false, refreshing: false });
-    } catch (e) {
-      this.setState({ tests: [], error: true, loading: false, refreshing: false });
-      console.warn('BloodListScreen load tests error - ', e);
-    }
+  loadTests = () => {
+    const { loadBloodList } = this.props;
+    loadBloodList();
   };
-
-  handleRefresh = () => {
-    this.setState({ refreshing: true });
-    this.loadTests();
-  };
-
-  sortTests(tests) {
-    return tests.sort((a, b) => {
-      const aa = a.date
-        .split('.')
-        .reverse()
-        .join();
-      const bb = b.date
-        .split('.')
-        .reverse()
-        .join();
-      if (aa < bb) return 1;
-      if (aa > bb) return -1;
-      return 0;
-    });
-  }
 
   handleError() {
     Alert.alert(
@@ -78,22 +55,25 @@ export default class BloodListScreen extends Component {
   }
 
   render() {
-    const { tests, loading, error, refreshing } = this.state;
-    if (loading) return <Loading />;
-    if (error) {
+    const { tests } = this.props;
+
+    if (isRejected(tests)) {
       this.handleError();
       return null;
     }
+
     return (
-      <FlatListUI
-        data={tests}
-        renderItem={this.renderItem}
-        keyExtractor={this.keyExtractor}
-        ItemSeparatorComponent={this.renderSeparator}
-        refreshing={refreshing}
-        onRefresh={this.handleRefresh}
-        contentContainerStyle={styles.contentStyle}
-      />
+      <PendingWrapper value={tests}>
+        <FlatListUI
+          data={tests.value}
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}
+          ItemSeparatorComponent={this.renderSeparator}
+          refreshing={false}
+          onRefresh={this.loadTests}
+          contentContainerStyle={styles.contentStyle}
+        />
+      </PendingWrapper>
     );
   }
 }

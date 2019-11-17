@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
 import { View, FlatList, Alert, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
-import Loading from '../components/Loading';
 import BloodResultItem from '../components/BloodResultItem';
-import { getBloodResult } from '../services/api';
+import PendingWrapper from '../components/PendingWrapper';
+import { isRejected } from '../redux/utils/status';
+import { statusType } from '../types';
 
 export default class BloodResultScreen extends Component {
+  static propTypes = {
+    loadBloodResults: PropTypes.func.isRequired,
+    results: PropTypes.shape({
+      value: PropTypes.any,
+      status: statusType,
+    }).isRequired,
+  };
+
   constructor(props) {
     super(props);
-    this.state = {
-      results: [],
-      error: false,
-      loading: true,
-      refreshing: false,
-    };
   }
 
   componentDidMount() {
@@ -21,18 +25,8 @@ export default class BloodResultScreen extends Component {
   }
 
   loadResults = async () => {
-    try {
-      const results = await getBloodResult();
-      this.setState({ results, loading: false, error: false, refreshing: false });
-    } catch (e) {
-      this.setState({ results: [], error: true, loading: false, refreshing: false });
-      console.warn('BloodListScreen load tests error - ', e);
-    }
-  };
-
-  handleRefresh = () => {
-    this.setState({ refreshing: true });
-    this.loadResults();
+    const { loadBloodResults } = this.props;
+    loadBloodResults();
   };
 
   handleError() {
@@ -61,27 +55,29 @@ export default class BloodResultScreen extends Component {
   }
 
   render() {
-    const { results, loading, error, refreshing } = this.state;
-    if (loading) return <Loading />;
-    if (error) {
+    const { results } = this.props;
+
+    if (isRejected(results)) {
       this.handleError();
       return null;
     }
     return (
-      <FlatListUI
-        data={results}
-        renderItem={this.renderItem}
-        keyExtractor={this.keyExtractor}
-        ItemSeparatorComponent={this.renderSeparator}
-        refreshing={refreshing}
-        onRefresh={this.handleRefresh}
-        contentContainerStyle={styles.contentStyle}
-      />
+      <PendingWrapper value={results}>
+        <FlatListUI
+          data={results.value}
+          renderItem={this.renderItem}
+          keyExtractor={this.keyExtractor}
+          ItemSeparatorComponent={this.renderSeparator}
+          refreshing={false}
+          onRefresh={this.loadResults}
+          contentContainerStyle={styles.contentStyle}
+        />
+      </PendingWrapper>
     );
   }
 }
 
-const FlatListUI = styled(FlatList)`
+export const FlatListUI = styled(FlatList)`
   background-color: 'rgba(0, 0, 0, 0.05)';
 `;
 

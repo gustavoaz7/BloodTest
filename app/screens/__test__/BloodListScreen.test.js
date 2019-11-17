@@ -1,82 +1,63 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import axios from 'axios';
 import BloodListScreen, { FlatListUI } from '../BloodListScreen';
-import { testsMock } from '../../mocks/tests';
-import { flushPromises } from '../../utils/tests';
-
-const sortedTestsMock = [testsMock[2], testsMock[0], testsMock[1]];
+import {
+  LOAD_BLOOD_LIST_FULFILLED_STATE as fulfilledState,
+  LOAD_BLOOD_LIST_PENDING_STATE as pendingState,
+  LOAD_BLOOD_LIST_REJECTED_STATE as rejectedState,
+} from '../../redux/BloodList/test.data';
 
 describe('BloodListScreen', () => {
-  const testsResponse = { data: testsMock };
-  const axiosMock = jest.fn().mockImplementation(() => Promise.resolve(testsResponse));
+  const noop = () => {};
 
-  beforeEach(() => {
-    axiosMock.mockClear();
-    axios.get = axiosMock;
+  describe('renders without crashing', () => {
+    it('pending state', () => {
+      shallow(<BloodListScreen {...pendingState} loadBloodList={noop} />);
+    });
+    it('fulfilled state', () => {
+      shallow(<BloodListScreen {...fulfilledState} loadBloodList={noop} />);
+    });
+    it('rejected state', () => {
+      shallow(<BloodListScreen {...rejectedState} loadBloodList={noop} />);
+    });
   });
 
-  it('renders without crashing', () => {
-    shallow(<BloodListScreen />);
+  it('loads tests when mouting', async () => {
+    const spy = jest.fn();
+    shallow(<BloodListScreen {...fulfilledState} loadBloodList={spy} />);
+
+    expect(spy).toHaveBeenCalled();
   });
 
-  it('sorts blood tests correctly', () => {
-    expect(BloodListScreen.prototype.sortTests(testsMock)).toEqual(sortedTestsMock);
-  });
+  it('reloads tests on `pull to refresh` ', async () => {
+    const spy = jest.fn();
+    const wrapper = shallow(<BloodListScreen {...fulfilledState} loadBloodList={spy} />);
 
-  it('loads sorted blood tests when mouting', async () => {
-    const wrapper = shallow(<BloodListScreen />);
-    const instance = wrapper.instance();
-    jest.spyOn(instance, 'sortTests');
-
-    await flushPromises();
-
-    expect(axiosMock).toHaveBeenCalled();
-    expect(instance.sortTests).toHaveBeenCalled();
-    expect(wrapper.state('tests')).toEqual(sortedTestsMock);
-  });
-
-  it('loads sorted blood tests on `pull to refresh` ', async () => {
-    const wrapper = shallow(<BloodListScreen />);
-    const instance = wrapper.instance();
-    const spy = jest.spyOn(instance, 'loadTests');
-
-    wrapper.update();
-    instance.forceUpdate();
-
-    await flushPromises();
+    spy.mockClear();
 
     wrapper
       .find(FlatListUI)
       .props()
       .onRefresh();
 
-    await flushPromises();
-
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
   describe('matches snapshot', () => {
-    it('loading state', () => {
-      const wrapper = shallow(<BloodListScreen />);
+    it('pending state', () => {
+      const wrapper = shallow(<BloodListScreen {...pendingState} loadBloodList={noop} />);
 
-      expect(wrapper).toMatchSnapshot('loading');
+      expect(wrapper).toMatchSnapshot('pending');
     });
 
-    it('error state', async () => {
-      const mock = jest.fn().mockImplementation(() => {
-        throw new Error('error');
-      });
-      axios.get = mock;
-      const wrapper = shallow(<BloodListScreen />);
-      await flushPromises();
+    it('rejected state', async () => {
+      const wrapper = shallow(<BloodListScreen {...rejectedState} loadBloodList={noop} />);
 
-      expect(wrapper).toMatchSnapshot('error');
+      expect(wrapper).toMatchSnapshot('rejected');
     });
 
     it('success state', async () => {
-      const wrapper = shallow(<BloodListScreen />);
-      await flushPromises();
+      const wrapper = shallow(<BloodListScreen {...fulfilledState} loadBloodList={noop} />);
 
       expect(wrapper).toMatchSnapshot('success');
     });
