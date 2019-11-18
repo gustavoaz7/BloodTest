@@ -1,11 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
+import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Feather } from '@expo/vector-icons';
 import styled, { withTheme } from 'styled-components/native';
 import Text from './base/Text';
 import Card from './base/Card';
 import { resultType, themeType } from '../types';
+import Touchable from './base/Touchable';
 
 const ICON_MAP = {
   morning: 'sunrise',
@@ -13,25 +15,27 @@ const ICON_MAP = {
   evening: 'moon',
 };
 
-function BloodResultItem({ item: { name, email, samples }, theme }) {
+function BloodResultItem({ onPress, item: { name, email, samples }, theme }) {
   return (
-    <Card>
-      <Header>
-        <Feather name="user" size={40} color={theme.primary} />
-        <Profile>
-          <Name>{name}</Name>
-          <Email numberOfLines={1}>{email}</Email>
-        </Profile>
-      </Header>
-      <Samples>
-        {samples.map(({ time, value }) => (
-          <SampleBox key={`${time}-${value}`}>
-            <Feather name={ICON_MAP[time]} size={25} color={theme.secondary} />
-            <SampleValue>{value}</SampleValue>
-          </SampleBox>
-        ))}
-      </Samples>
-    </Card>
+    <Touchable onPress={onPress}>
+      <Card>
+        <Header>
+          <Feather name="user" size={40} color={theme.primary} />
+          <Profile>
+            <Name>{name}</Name>
+            <Email numberOfLines={1}>{email}</Email>
+          </Profile>
+        </Header>
+        <Samples>
+          {samples.map(({ time, value }) => (
+            <SampleBox key={`${time}-${value}`}>
+              <Feather name={ICON_MAP[time]} size={25} color={theme.secondary} />
+              <SampleValue>{value}</SampleValue>
+            </SampleBox>
+          ))}
+        </Samples>
+      </Card>
+    </Touchable>
   );
 }
 
@@ -73,6 +77,11 @@ export const SampleValue = styled(Text)`
 BloodResultItem.propTypes = {
   item: resultType.isRequired,
   theme: themeType.isRequired,
+  onPress: PropTypes.func,
+};
+
+BloodResultItem.defaultProps = {
+  onPress() {},
 };
 
 export default withTheme(BloodResultItem);

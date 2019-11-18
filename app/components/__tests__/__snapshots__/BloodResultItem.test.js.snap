@@ -1,67 +1,77 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BloodResultItem matches snapshot 1`] = `
-<Card
+<Touchable
+  borderless={false}
+  disabled={false}
+  disabledOpacity={0.4}
+  onPress={[Function]}
+  pressColor="rgba(0, 0, 0, .32)"
   style={null}
+  useOpacity={false}
 >
-  <Styled(Styled(View))>
-    <Icon
-      allowFontScaling={false}
-      color="#f5785a"
-      name="user"
-      size={40}
-    />
-    <Styled(View)>
-      <Styled(Styled(Text))>
-        Citlalli Kuhic
-      </Styled(Styled(Text))>
-      <Styled(Styled(Text))
-        numberOfLines={1}
+  <Card
+    style={null}
+  >
+    <Styled(Styled(View))>
+      <Icon
+        allowFontScaling={false}
+        color="#f5785a"
+        name="user"
+        size={40}
+      />
+      <Styled(View)>
+        <Styled(WithTheme(TextUI))>
+          Citlalli Kuhic
+        </Styled(WithTheme(TextUI))>
+        <Styled(WithTheme(TextUI))
+          numberOfLines={1}
+        >
+          Berniece.Haley42@hotmail.com
+        </Styled(WithTheme(TextUI))>
+      </Styled(View)>
+    </Styled(Styled(View))>
+    <Styled(Styled(View))>
+      <Styled(View)
+        key="morning-0.48"
       >
-        Berniece.Haley42@hotmail.com
-      </Styled(Styled(Text))>
-    </Styled(View)>
-  </Styled(Styled(View))>
-  <Styled(Styled(View))>
-    <Styled(View)
-      key="morning-0.48"
-    >
-      <Icon
-        allowFontScaling={false}
-        color="#321b3c"
-        name="sunrise"
-        size={25}
-      />
-      <Styled(Styled(Text))>
-        0.48
-      </Styled(Styled(Text))>
-    </Styled(View)>
-    <Styled(View)
-      key="afternoon-0.39"
-    >
-      <Icon
-        allowFontScaling={false}
-        color="#321b3c"
-        name="sunset"
-        size={25}
-      />
-      <Styled(Styled(Text))>
-        0.39
-      </Styled(Styled(Text))>
-    </Styled(View)>
-    <Styled(View)
-      key="evening-0.19"
-    >
-      <Icon
-        allowFontScaling={false}
-        color="#321b3c"
-        name="moon"
-        size={25}
-      />
-      <Styled(Styled(Text))>
-        0.19
-      </Styled(Styled(Text))>
-    </Styled(View)>
-  </Styled(Styled(View))>
-</Card>
+        <Icon
+          allowFontScaling={false}
+          color="#321b3c"
+          name="sunrise"
+          size={25}
+        />
+        <Styled(WithTheme(TextUI))>
+          0.48
+        </Styled(WithTheme(TextUI))>
+      </Styled(View)>
+      <Styled(View)
+        key="afternoon-0.39"
+      >
+        <Icon
+          allowFontScaling={false}
+          color="#321b3c"
+          name="sunset"
+          size={25}
+        />
+        <Styled(WithTheme(TextUI))>
+          0.39
+        </Styled(WithTheme(TextUI))>
+      </Styled(View)>
+      <Styled(View)
+        key="evening-0.19"
+      >
+        <Icon
+          allowFontScaling={false}
+          color="#321b3c"
+          name="moon"
+          size={25}
+        />
+        <Styled(WithTheme(TextUI))>
+          0.19
+        </Styled(WithTheme(TextUI))>
+      </Styled(View)>
+    </Styled(Styled(View))>
+  </Card>
+</Touchable>
 `;

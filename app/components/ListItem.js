@@ -1,20 +1,24 @@
 import React from 'react';
 import { View } from 'react-native';
 import styled from 'styled-components/native';
+import PropTypes from 'prop-types';
 import Text from './base/Text';
 import Card from './base/Card';
 import { bloodListItemType } from '../types';
 import ResultDiagram from './ResultDiagram';
+import Touchable from './base/Touchable';
 
-export default function ListItem({ item: { title, date, result } }) {
+export default function ListItem({ onPress, item: { title, date, result } }) {
   return (
-    <Card>
-      <Header>
-        <Bold>{title}</Bold>
-        <Date>{date}</Date>
-      </Header>
-      <ResultDiagramUI result={result} />
-    </Card>
+    <Touchable onPress={onPress}>
+      <Card>
+        <Header>
+          <Bold>{title}</Bold>
+          <Date>{date}</Date>
+        </Header>
+        <ResultDiagramUI result={result} />
+      </Card>
+    </Touchable>
   );
 }
 
@@ -41,4 +45,9 @@ const ResultDiagramUI = styled(ResultDiagram)`
 
 ListItem.propTypes = {
   item: bloodListItemType.isRequired,
+  onPress: PropTypes.func,
+};
+
+ListItem.defaultProps = {
+  onPress() {},
 };

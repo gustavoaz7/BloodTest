@@ -1,42 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListItem matches snapshot 1`] = `
-<Card
+<Touchable
+  borderless={false}
+  disabled={false}
+  disabledOpacity={0.4}
+  onPress={[Function]}
+  pressColor="rgba(0, 0, 0, .32)"
   style={null}
+  useOpacity={false}
 >
-  <Styled(Styled(View))>
-    <Styled(Styled(Text))>
-      Healthcare
-    </Styled(Styled(Text))>
-    <Styled(Styled(Text))>
-      17.07.2019
-    </Styled(Styled(Text))>
-  </Styled(Styled(View))>
-  <Styled(ResultDiagram)
-    result={
-      Array [
-        Object {
-          "biomarker": "fats",
-          "color": "#e30613",
-          "percentage": 25,
-        },
-        Object {
-          "biomarker": "carbohydrates",
-          "color": "#D3235D",
-          "percentage": 25,
-        },
-        Object {
-          "biomarker": "vitamins",
-          "color": "#547F81",
-          "percentage": 25,
-        },
-        Object {
-          "biomarker": "magnesium",
-          "color": "#0085FF",
-          "percentage": 25,
-        },
-      ]
-    }
-  />
-</Card>
+  <Card
+    style={null}
+  >
+    <Styled(Styled(View))>
+      <Styled(WithTheme(TextUI))>
+        Healthcare
+      </Styled(WithTheme(TextUI))>
+      <Styled(WithTheme(TextUI))>
+        17.07.2019
+      </Styled(WithTheme(TextUI))>
+    </Styled(Styled(View))>
+    <Styled(ResultDiagram)
+      result={
+        Array [
+          Object {
+            "biomarker": "fats",
+            "color": "#e30613",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "carbohydrates",
+            "color": "#D3235D",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "vitamins",
+            "color": "#547F81",
+            "percentage": 25,
+          },
+          Object {
+            "biomarker": "magnesium",
+            "color": "#0085FF",
+            "percentage": 25,
+          },
+        ]
+      }
+    />
+  </Card>
+</Touchable>
 `;

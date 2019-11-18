@@ -7,11 +7,11 @@ exports[`DiagramLabel matches snapshot 1`] = `
   <Styled(View)
     color="#e30613"
   />
-  <Styled(Styled(Text))>
+  <Styled(WithTheme(TextUI))>
     25%
-  </Styled(Styled(Text))>
-  <Styled(Styled(Text))>
+  </Styled(WithTheme(TextUI))>
+  <Styled(WithTheme(TextUI))>
     fats
-  </Styled(Styled(Text))>
+  </Styled(WithTheme(TextUI))>
 </Styled(View)>
 `;

@@ -4,7 +4,7 @@ exports[`ResultDiagram matches snapshot 1`] = `
 <Fragment>
   <Styled(View)>
     <Styled(Styled(View))
-      key="#e30613-25"
+      key="fats-#e30613-25"
     >
       <Styled(View)
         color="#e30613"
@@ -12,7 +12,7 @@ exports[`ResultDiagram matches snapshot 1`] = `
       />
     </Styled(Styled(View))>
     <Styled(Styled(View))
-      key="#D3235D-25"
+      key="carbohydrates-#D3235D-25"
     >
       <Styled(View) />
       <Styled(View)
@@ -21,7 +21,7 @@ exports[`ResultDiagram matches snapshot 1`] = `
       />
     </Styled(Styled(View))>
     <Styled(Styled(View))
-      key="#547F81-25"
+      key="vitamins-#547F81-25"
     >
       <Styled(View) />
       <Styled(View)
@@ -30,7 +30,7 @@ exports[`ResultDiagram matches snapshot 1`] = `
       />
     </Styled(Styled(View))>
     <Styled(Styled(View))
-      key="#0085FF-25"
+      key="magnesium-#0085FF-25"
     >
       <Styled(View) />
       <Styled(View)
