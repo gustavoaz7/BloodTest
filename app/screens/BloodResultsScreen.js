@@ -5,12 +5,14 @@ import styled from 'styled-components/native';
 import BloodResultItem from '../components/BloodResultItem';
 import PendingWrapper from '../components/PendingWrapper';
 import { isRejected } from '../redux/utils/status';
-import { stateWithStatusType } from '../types';
+import { stateWithStatusType, stackNavigationType } from '../types';
+import { SCREENS } from '../constants';
 
 export default class BloodResultScreen extends Component {
   static propTypes = {
     loadBloodResults: PropTypes.func.isRequired,
     results: stateWithStatusType.isRequired,
+    navigation: stackNavigationType.isRequired,
   };
 
   constructor(props) {
@@ -24,6 +26,10 @@ export default class BloodResultScreen extends Component {
   loadResults = async () => {
     const { loadBloodResults } = this.props;
     loadBloodResults();
+  };
+
+  navigateTemplate = () => {
+    this.props.navigation.navigate(SCREENS.TEMPLATE, { from: 'BloodResultsScreen' });
   };
 
   handleError() {
@@ -43,9 +49,9 @@ export default class BloodResultScreen extends Component {
     return item.id;
   }
 
-  renderItem({ item }) {
-    return <BloodResultItem item={item} />;
-  }
+  renderItem = ({ item }) => {
+    return <BloodResultItem item={item} onPress={this.navigateTemplate} />;
+  };
 
   renderSeparator() {
     return <Separator />;

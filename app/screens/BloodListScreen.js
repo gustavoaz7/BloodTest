@@ -3,14 +3,16 @@ import { View, FlatList, Alert, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components/native';
 import { isRejected } from '../redux/utils/status';
-import { stateWithStatusType } from '../types';
+import { stateWithStatusType, stackNavigationType } from '../types';
 import ListItem from '../components/ListItem';
 import PendingWrapper from '../components/PendingWrapper';
+import { SCREENS } from '../constants';
 
 export default class BloodListScreen extends Component {
   static propTypes = {
     loadBloodList: PropTypes.func.isRequired,
     tests: stateWithStatusType.isRequired,
+    navigation: stackNavigationType.isRequired,
   };
 
   constructor(props) {
@@ -24,6 +26,10 @@ export default class BloodListScreen extends Component {
   loadTests = () => {
     const { loadBloodList } = this.props;
     loadBloodList();
+  };
+
+  navigateTemplate = () => {
+    this.props.navigation.navigate(SCREENS.TEMPLATE, { from: 'BloodListScreen' });
   };
 
   handleError() {
@@ -43,9 +49,9 @@ export default class BloodListScreen extends Component {
     return item.id;
   }
 
-  renderItem({ item }) {
-    return <ListItem item={item} />;
-  }
+  renderItem = ({ item }) => {
+    return <ListItem item={item} onPress={this.navigateTemplate} />;
+  };
 
   renderSeparator() {
     return <Separator />;

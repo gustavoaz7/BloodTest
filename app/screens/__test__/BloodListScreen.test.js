@@ -6,32 +6,39 @@ import {
   LOAD_BLOOD_LIST_PENDING_STATE as pendingState,
   LOAD_BLOOD_LIST_REJECTED_STATE as rejectedState,
 } from '../../redux/BloodList/test.data';
+import { SCREENS } from '../../constants';
+import { stackNavigationProps } from '../../utils/tests';
 
 describe('BloodListScreen', () => {
   const noop = () => {};
+  const props = {
+    loadBloodList: noop,
+    navigation: stackNavigationProps,
+    ...fulfilledState,
+  };
 
   describe('renders without crashing', () => {
     it('pending state', () => {
-      shallow(<BloodListScreen {...pendingState} loadBloodList={noop} />);
+      shallow(<BloodListScreen {...props} {...pendingState} />);
     });
     it('fulfilled state', () => {
-      shallow(<BloodListScreen {...fulfilledState} loadBloodList={noop} />);
+      shallow(<BloodListScreen {...props} />);
     });
     it('rejected state', () => {
-      shallow(<BloodListScreen {...rejectedState} loadBloodList={noop} />);
+      shallow(<BloodListScreen {...props} {...rejectedState} />);
     });
   });
 
   it('loads tests when mouting', async () => {
     const spy = jest.fn();
-    shallow(<BloodListScreen {...fulfilledState} loadBloodList={spy} />);
+    shallow(<BloodListScreen {...props} loadBloodList={spy} />);
 
     expect(spy).toHaveBeenCalled();
   });
 
   it('reloads tests on `pull to refresh` ', async () => {
     const spy = jest.fn();
-    const wrapper = shallow(<BloodListScreen {...fulfilledState} loadBloodList={spy} />);
+    const wrapper = shallow(<BloodListScreen {...props} loadBloodList={spy} />);
 
     spy.mockClear();
 
@@ -43,21 +50,35 @@ describe('BloodListScreen', () => {
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
+  it(`navigates to ${SCREENS.TEMPLATE} on 'navigateTemplate' call`, () => {
+    const navigateSpy = jest.fn();
+    const navigation = {
+      ...stackNavigationProps,
+      navigate: navigateSpy,
+    };
+    const wrapper = shallow(<BloodListScreen {...props} navigation={navigation} />);
+
+    wrapper.instance().navigateTemplate();
+
+    expect(navigateSpy).toBeCalledTimes(1);
+    expect(navigateSpy.mock.calls[0][0]).toBe(SCREENS.TEMPLATE);
+  });
+
   describe('matches snapshot', () => {
     it('pending state', () => {
-      const wrapper = shallow(<BloodListScreen {...pendingState} loadBloodList={noop} />);
+      const wrapper = shallow(<BloodListScreen {...props} {...pendingState} />);
 
       expect(wrapper).toMatchSnapshot('pending');
     });
 
     it('rejected state', async () => {
-      const wrapper = shallow(<BloodListScreen {...rejectedState} loadBloodList={noop} />);
+      const wrapper = shallow(<BloodListScreen {...props} {...rejectedState} />);
 
       expect(wrapper).toMatchSnapshot('rejected');
     });
 
     it('success state', async () => {
-      const wrapper = shallow(<BloodListScreen {...fulfilledState} loadBloodList={noop} />);
+      const wrapper = shallow(<BloodListScreen {...props} />);
 
       expect(wrapper).toMatchSnapshot('success');
     });

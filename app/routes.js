@@ -8,18 +8,43 @@ import NavigationHeaderImage from './components/navigation/NavigationHeaderImage
 import NavigationBottomListIcon from './components/navigation/NavigationBottomListIcon';
 import NavigationBottomResultIcon from './components/navigation/NavigationBottomResultIcon';
 import { theme } from './theme';
+import NavigationTemplateScreen from './screens/NavigationTemplateScreen';
+
+const hideHeader = { header: null };
+
+const BloodListWithTemplate = createStackNavigator({
+  [SCREENS.BLOOD_LIST]: {
+    screen: ConnectedBloodListScreen,
+    navigationOptions: hideHeader,
+  },
+  [SCREENS.TEMPLATE]: {
+    screen: NavigationTemplateScreen,
+    navigationOptions: hideHeader,
+  },
+});
+
+const BloodResultsWithTemplate = createStackNavigator({
+  [SCREENS.BLOOD_RESULTS]: {
+    screen: ConnectedBloodResultsScreen,
+    navigationOptions: hideHeader,
+  },
+  [SCREENS.TEMPLATE]: {
+    screen: NavigationTemplateScreen,
+    navigationOptions: hideHeader,
+  },
+});
 
 const MainBottomNavigation = createBottomTabNavigator(
   {
-    [SCREENS.BLOOD_LIST]: {
-      screen: ConnectedBloodListScreen,
+    bloodListWithTemplate: {
+      screen: BloodListWithTemplate,
       navigationOptions: {
         tabBarLabel: 'List',
         tabBarIcon: NavigationBottomListIcon,
       },
     },
-    [SCREENS.BLOOD_RESULTS]: {
-      screen: ConnectedBloodResultsScreen,
+    bloodResultsWithTemplate: {
+      screen: BloodResultsWithTemplate,
       navigationOptions: {
         tabBarLabel: 'Results',
         tabBarIcon: NavigationBottomResultIcon,
@@ -27,7 +52,6 @@ const MainBottomNavigation = createBottomTabNavigator(
     },
   },
   {
-    initialRouteName: SCREENS.BLOOD_RESULTS,
     tabBarOptions: {
       activeTintColor: theme.primary,
     },

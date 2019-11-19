@@ -54,7 +54,7 @@ export const resultType = PropTypes.shape({
   samples: PropTypes.arrayOf(sampleType).isRequired,
 });
 
-export const statusType = PropTypes.PropTypes.oneOf(Object.values(ActionType));
+export const statusType = PropTypes.oneOf(Object.values(ActionType));
 
 export const stateWithStatusType = PropTypes.shape({
   value: PropTypes.any,
